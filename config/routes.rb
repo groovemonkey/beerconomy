@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'beers/create'
+
   get 'static/home'
 
   get 'static/about'
@@ -26,6 +28,11 @@ Rails.application.routes.draw do
   match '/signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
   resources :identities
+
+
+  resources :beers
+  # this makes beers fairly hard to guess -- we're using randomIDs instead of DB ids
+  match "/beer/:randID", to: 'beers#show', as: 'showbeer', via: [:get]
 
   # match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   # match 'auth/failure', to: redirect('/'), via: [:get, :post]

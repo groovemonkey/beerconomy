@@ -15,6 +15,9 @@
 
 <% if current_user %>
   Welcome <strong><%= current_user.name %></strong>!
+
+  <p>You're logged in with <%= current_user.provider %></p>
+
   <p><%= link_to "Sign out", signout_path, id: "sign_out" %></p>
 <% else %>
   <%= link_to "Sign in", "/sessions/new", id: "sign_in" %>

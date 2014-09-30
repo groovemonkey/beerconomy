@@ -1,0 +1,48 @@
+TODO:
+
+-routes.rb and beers#create: make it so beers are accessed NOT by params[:id], but by params[:randID]
+
+
+
+
+
+
+
+
+
+
+
+
+# add authentication requirement for the following:
+
+-user_controller#giveBeer (only if you're POSTing; you should be able to go through the creation process without registering)
+
+do we need a Beers controller?
+  -with new/create actions and views? Or are we doing all of this in the User controller?
+
+
+
+  try  @identity.try(:email)
+
+
+THIS IS BACKWARDS:
+-beers belong to the givers
+-they should change to belong to the RECEIVERS, when they're received
+
+should I move beersGiven and beersReceived into IDENTITY? Which is the higher-level model??
+
+
+current_user is one of these:
+
+User.all()
+  User Load (0.4ms)  SELECT "users".* FROM "users"
+ => #<ActiveRecord::Relation [#<User id: 3, name: "Dave Cohen", passhash: nil, email: nil, beersGiven: nil, beersReceived: nil, created_at: "2014-09-29 13:26:37", updated_at: "2014-09-29 13:26:37", provider: "identity", uid: "8", oauth_token: nil, oauth_expires_at: nil>]> 
+
+
+
+
+2.1.2 :008 > Identity.all()
+  Identity Load (0.3ms)  SELECT "identities".* FROM "identities"
+ => #<ActiveRecord::Relation [#<Identity id: 8, name: "Dave Cohen", email: "dave@project768.com", password_digest: "$2a$10$d2pQu4d28A6Sm3eGMPyNJut7Up9WVntYG1/0rAXwMf1...", created_at: "2014-09-29 13:26:37", updated_at: "2014-09-29 13:26:37">]> 
+
+

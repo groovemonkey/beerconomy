@@ -1,0 +1,26 @@
+<h1>Give the Gift of Beer</h1>
+
+<p>This is the beer-gifting composer.</p>
+<p>It's a magical combination of selfless gifting, thoughtful composition, and beer.</p>
+
+<p>Compose:</p>
+<ul>
+  <li>coddling term for recipient (dude, chica, homie, your awesomeness, Steve etc.)</li>
+  <li>message (optional; e.g. "I love you so much and wanted to give you the gift of beer)</li>
+</ul>
+
+
+<%= form_for @beer do %>
+
+  <div class="field">
+    <%= label_tag :recipient %><br>
+    <%= text_field_tag :recipient %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :note %><br>
+    <%= text_field_tag :note %>
+  </div>
+
+  <div class="actions"><%= submit_tag "Give Beer" %></div>
+<% end %>

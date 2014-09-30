@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :beers
+  has_many :beers, dependent: :destroy
 
   def self.from_omniauth(auth)
     find_by_provider_and_uid(auth["provider"], auth["uid"]) || create_with_omniauth(auth)
