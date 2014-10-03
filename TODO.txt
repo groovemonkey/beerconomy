@@ -17,10 +17,6 @@ TODO:
 
 -user_controller#giveBeer (only if you're POSTing; you should be able to go through the creation process without registering)
 
-do we need a Beers controller?
-  -with new/create actions and views? Or are we doing all of this in the User controller?
-
-
 
   try  @identity.try(:email)
 

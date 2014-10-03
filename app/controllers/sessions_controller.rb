@@ -6,7 +6,17 @@ class SessionsController < ApplicationController
   def create
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
-    redirect_to '/user/home', notice: "Signed in!"
+
+    # complete action they were attempting before login
+    if session[:action_to_complete] == "create_beer"
+      session[:action_to_complete] = nil
+      redirect_to new_beer_path
+
+    else
+      puts "HOLY CRAP! YOU DONT HAVE AN ACTION TO COMPLETE"
+      puts "session keys: #{session.keys}"
+      redirect_to '/user/home', notice: "Signed in!"
+    end
   end
 
   def destroy

@@ -1,28 +1,73 @@
-== README
+beerconomy.com -- I Owe You A Beer!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+you send a link to someone, saying "I owe you a beer, [dude/chica/homie/whatever]." You have 3 beers to give every day. None on a sunday.
 
-Things you may want to cover:
+That link takes you to a screen where you can accept the beer (sign in or register).
 
-* Ruby version
+Your profile shows how many beers you've been given, which people have given you beers, and who you've given beers to.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+There is a world map showing where people were when they were giving you a beer.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
+
+Pick a username and password; we don't want your e-mail. If you don't enter your e-mail address, make sure to pick a really stupid password so that you don't forget it.
+
+Let users enter their e-mail only if they want to be able to recover a password.
+
+How to keep from people gifting fake beers?
+    -give a randomID to the beer
+
+
+###########
+# Views:
+###########
+-USER:
+    -home (show beers received, beers given, map of last 100 received beers)
+
+    -giveBeer (if logged in and you have a beer available, you can gift someone a beer) -- generate beer gift link
+
+    -receiveBeer (if logged out, offer login/register) (if logged in, receive the beer at a special celebratory screen)
+
+    -new
+
+
+
+###########
+# DATABASE:
+###########
+user {
+    username
+    passwdhash (salt + hash, bcrypt)
+    email
+    joindate
+    beersGiven: array of userIDs
+    beersReceived: array of beerIDs
+}
+beer {
+    sponsor (user)
+    recipient (user)
+    givenAt (creation timestamp)
+    givenFromLocation (geolocation)
+    beerRandomID (randomID)
+    receivedAt (timestamp, null until accepted)
+}
+
+Relationships:
+user has many beers
+beer has TWO users (has many?)
+beer belongs to ONE user (but was given_by another)
+# the problem with this is that finding "who has this user GIVEN beers to" requires parsing ALL beers to see which were given_by this user.
+
+DONE:
+apt-get install postgresql-9.4 postgresql-server-dev-9.4
+su - postgres
+create role beerapp with createdb login password 'oij34c8902ckdhsaH'
+
+rails new myapp --database=postgresql
+
+rails generate model User name:string passhash:string email:string beersGiven:array beersReceived:array
+
+rails generate model Beer sponsor:integer recipient:integer lat:string lon:string randID:string receivedAt:timestamp
+
+
