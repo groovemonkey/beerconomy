@@ -1,16 +1,15 @@
 TODO:
 
--implement receiving of beers
--beers don't have a clear owner -- nothing referring to beers in model except for beersReceived?
+-beers.receiver is an integer field, but impossible to set and save. WTF?
 -users shouldn't be able to gift themselves beer
--receiving a beer should force you to log in or register
+
+-for a reset, do `rake db:drop db:create db:migrate db:seed`
 
 
 THIS IS BACKWARDS:
 -beers belong to the givers
 -they should change to belong to the RECEIVERS, when they're received
-
-should I move beersGiven and beersReceived into IDENTITY? Which is the higher-level model??
+-problem: get an error about FIXNUM and INT types when I try to set the Beer.user field
 
 
 current_user is one of these:
@@ -18,8 +17,6 @@ current_user is one of these:
 User.all()
   User Load (0.4ms)  SELECT "users".* FROM "users"
  => #<ActiveRecord::Relation [#<User id: 3, name: "Dave Cohen", passhash: nil, email: nil, beersGiven: nil, beersReceived: nil, created_at: "2014-09-29 13:26:37", updated_at: "2014-09-29 13:26:37", provider: "identity", uid: "8", oauth_token: nil, oauth_expires_at: nil>]> 
-
-
 
 
 2.1.2 :008 > Identity.all()
@@ -32,6 +29,9 @@ THINGS I AM APOLOGIZING FOR:
 
 -beer has 'id' and 'randID'. Because I'm using 'randID' as primary key, calling Beer.id DOES NOT return the numerical ID; it returns the 'randID' string. To get the numerical ID, you have to call Beer['id']. I am truly sorry.
 
+Do we really need both of these?
+  @beer.user = current_user.uid.to_i
+  @beer.recipient = current_user.uid.to_i
 
 
 

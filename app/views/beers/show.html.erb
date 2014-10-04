@@ -1,12 +1,15 @@
 <h1>This is a Beer.</h1>
 
-<p>Given by: User number <%= @beer.sponsor %></p>
-<p>Given to: <%= @beer.recipient %></p>
+<p>Given by: <%= @sponsorname %></p>
+
+<% if @recipientname != false %>
+<p>Given to: <%= @recipientname %></p>
+<% end %>
 
 <hr>
 <h3>Beer .randID and .id are the same, because randID is now the primary key for the Beer model.</h3>
 <p>Unique ID: <%= @beer.randID %></p>
-<p>Database ID: <%= @beer.id %></p>
+<p>Database ID: <%= @beer['id'] %></p>
 <hr>
 
 <p>Note: <%= @beer.note %></p>

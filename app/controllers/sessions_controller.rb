@@ -12,17 +12,21 @@ class SessionsController < ApplicationController
       session[:action_to_complete] = nil
       redirect_to new_beer_path
 
+    elsif session[:action_to_complete] == "receive_beer"
+      session[:action_to_complete] = nil
+      redirect_to receivebeer_path(session[:beer_to_receive])
+
     else
-      puts "HOLY CRAP! YOU DONT HAVE AN ACTION TO COMPLETE"
-      puts "session keys: #{session.keys}"
       redirect_to '/user/home', notice: "Signed in!"
     end
   end
+
 
   def destroy
     session[:user_id] = nil
     redirect_to root_url, notice: "Signed out!"
   end
+
 
   def failure
     redirect_to root_url, alert: "Authentication failed, please try again."

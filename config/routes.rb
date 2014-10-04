@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'beers/create'
 
-  match 'beers/receive/:randID', to: "beers#receive", via: [:get]
+  match 'beers/receive/:randID', to: "beers#receive", as: 'receivebeer', via: [:get]
 
   get 'static/home' # overridden by root route below
   match "/about", to: "static#about", via: [:get]
