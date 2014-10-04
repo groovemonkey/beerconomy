@@ -2,6 +2,7 @@ TODO:
 
 -beers.receiver is an integer field, but impossible to set and save. WTF?
 -users shouldn't be able to gift themselves beer
+-once a beer has been received, it shouldn't be receivable again (just redirect to the beer)
 
 -for a reset, do `rake db:drop db:create db:migrate db:seed`
 

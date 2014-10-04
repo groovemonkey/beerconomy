@@ -2,7 +2,7 @@ require 'digest/sha1'
 
 class Beer < ActiveRecord::Base
   self.primary_key = "randID"
-  before_save :calc_hash # if this doesn't work, use before_validation
+  before_create :calc_hash
   belongs_to :user
 
   private
