@@ -1,0 +1,21 @@
+<h1>You've Received a Cold, Delicous Beer from <%= @sponsorname %>!</h1>
+
+<p>Isn't that wonderful?</p>
+
+<p>It is. It really is.</p>
+
+<p><%= @sponsorname %> poured your beer on <%= @beer.created_at.strftime("%B %d, %Y at %I:%M%p") %> </p>
+
+
+<% if @beer.note %>
+  <p>There's a beautiful note attached!</p>
+  <p class="beerNote">Note: <%= @beer.note %></p>
+<% end %>
+
+
+<!-- <p>lat: <%= @beer.lat %></p>
+<p>lon: <%= @beer.lon %></p> -->
+
+<p>You accepted this beer on <%= @beer.receivedAt.strftime("%B %d, %Y at %I:%M%p") %></p>
+
+

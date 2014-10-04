@@ -13,5 +13,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  def brokenPush(arrayname, value)
+    #hack = "self.update(#{arrayname}: [(self.#{arrayname} << '#{value}')].flatten)"
+    #puts hack
+    #exec("#{hack}")
+  end
+
+  def wtf(val)
+    self.update(beersOffered: [(self.beersOffered << val)].flatten)
+  end
+
   
 end

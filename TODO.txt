@@ -1,24 +1,9 @@
 TODO:
 
--routes.rb and beers#create: make it so beers are accessed NOT by params[:id], but by params[:randID]
-
-
-
-
-
-
-
-
-
-
-
-
-# add authentication requirement for the following:
-
--user_controller#giveBeer (only if you're POSTing; you should be able to go through the creation process without registering)
-
-
-  try  @identity.try(:email)
+-implement receiving of beers
+-beers don't have a clear owner -- nothing referring to beers in model except for beersReceived?
+-users shouldn't be able to gift themselves beer
+-receiving a beer should force you to log in or register
 
 
 THIS IS BACKWARDS:
@@ -40,5 +25,13 @@ User.all()
 2.1.2 :008 > Identity.all()
   Identity Load (0.3ms)  SELECT "identities".* FROM "identities"
  => #<ActiveRecord::Relation [#<Identity id: 8, name: "Dave Cohen", email: "dave@project768.com", password_digest: "$2a$10$d2pQu4d28A6Sm3eGMPyNJut7Up9WVntYG1/0rAXwMf1...", created_at: "2014-09-29 13:26:37", updated_at: "2014-09-29 13:26:37">]> 
+
+
+
+THINGS I AM APOLOGIZING FOR:
+
+-beer has 'id' and 'randID'. Because I'm using 'randID' as primary key, calling Beer.id DOES NOT return the numerical ID; it returns the 'randID' string. To get the numerical ID, you have to call Beer['id']. I am truly sorry.
+
+
 
 

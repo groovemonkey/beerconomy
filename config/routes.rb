@@ -1,24 +1,16 @@
 Rails.application.routes.draw do
   get 'beers/create'
 
-  get 'static/home'
+  match 'beers/receive/:randID', to: "beers#receive", via: [:get]
 
-  get 'static/about'
+  get 'static/home' # overridden by root route below
+  match "/about", to: "static#about", via: [:get]
 
   get 'static/global_beer_activity'
 
   get 'user/home'
 
-  get 'user/give_beer'
-
-  get 'user/receive_beer'
-
-  get 'user/new'
-
-  get 'user/edit'
-
   get 'sessions/new'
-
 
 
   # authentication

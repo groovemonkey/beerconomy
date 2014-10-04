@@ -35,3 +35,19 @@
   <% end %>
 <% end %>
 
+
+<% if @beersOffered %>
+  <% @beersOffered.each do |b| %>
+
+  <div class="beerOffered">
+    <li>recipient<%= b.recipient %></li>
+    <li>lat<%= b.lat %></li>
+    <li>lon<%= b.lon %></li>
+    <li>randID<%= b.randID %></li>
+    <li>receivedAt<%= b.receivedAt %></li>
+    <li>note<%= b.note %></li>
+  </div>
+
+  <% end %>
+<% end %>
+

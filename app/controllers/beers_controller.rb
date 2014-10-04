@@ -24,6 +24,10 @@ class BeersController < ApplicationController
       )
 
       if @beer.save
+        #user.update(beersOffered: [(user.beersOffered << @beer.randID)].flatten)
+        user.beersOffered_will_change!
+        user.beersOffered.push(@beer.randID)
+        user.save
         redirect_to @beer
       else
         redirect_to new_beer_path, notice: "There were some problems saving your beer..."
@@ -41,6 +45,44 @@ class BeersController < ApplicationController
       # go to login screen
       redirect_to "/sessions/new"
     end
+
+  end
+
+
+  def receive()
+    # beer comes in as a random ID, shared through a link OUTSIDE the app
+    randID = params[:randID]
+    timenow = Time.now()
+    @beer = Beer.find(randID)
+
+    # credit the sender and remove beer from 'beersOffered'
+    sponsor = User.find_by uid: @beer.sponsor.to_s
+    sponsor.beersGiven_will_change!
+    sponsor.beersOffered_will_change!
+    sponsor.beersOffered -= [randID]
+    sponsor.beersGiven.push(@beer['id'])
+    sponsor.save
+
+    # credit the receiver; formerly # current_user.beersReceived.push(beer.id)
+    user = current_user
+    user.beersReceived_will_change!
+    user.beersReceived.push(@beer['id'])
+    user.save
+
+    # change the beer's owner
+    @beer.recipient = current_user.uid
+    @beer.receivedAt = timenow
+    @beer.save
+
+    # set more vars for view
+    @sponsorname = sponsor.name
+  end
+
+
+
+  def transfer
+    # this needs to come in with a route using randID, and properly passing that in the params
+
 
   end
 
