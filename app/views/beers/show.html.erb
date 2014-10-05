@@ -2,19 +2,18 @@
 
 <p>Given by: <%= @sponsorname %></p>
 
-<% if @recipientname != false %>
-<p>Given to: <%= @recipientname %></p>
+<% if @recipientname == false %>
+  <p>Send this link to the receiver: <%= url_for receivebeer_path(@beer.randID) %></p>
+<% else %>
+  <p>Given to: <%= @recipientname %></p>
 <% end %>
 
 <hr>
-<h3>Beer .randID and .id are the same, because randID is now the primary key for the Beer model.</h3>
-<p>Unique ID: <%= @beer.randID %></p>
-<p>Database ID: <%= @beer['id'] %></p>
-<hr>
 
+<p>To: <%= @beer.receiver %></p>
 <p>Note: <%= @beer.note %></p>
 
-<p>Given at latitude: <%= @beer.lat %></p>
-<p>Given at longitude: <%= @beer.lon %></p>
+<!-- <p>Given at latitude: <%= @beer.lat %></p>
+<p>Given at longitude: <%= @beer.lon %></p> -->
 
 

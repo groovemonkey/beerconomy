@@ -1,6 +1,9 @@
 TODO:
+-add email address field for giving beers? Let them be mailed out?
+-improve show beer screen after creation, i.e. "send this link to your friend!"
 
-
+-Beer.recipient needs to be a STRING -- the name of the receiver, specified during beer creation (this won't work the way it is now)
+-Stuff that Beer.recipient is being used for needs to switch to Beer.user (right?)
 
 
 THINGS I AM APOLOGIZING FOR:
