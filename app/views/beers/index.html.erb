@@ -1,0 +1,10 @@
+<h1>Latest Beers</h1>
+
+<p>Below you'll find the most up-to-date beer-receiving action in the world. It's quite amazing to see all of this valuable insight, made possible by modern technology.</p>
+
+<div class="beerLog">
+  <% @beers.each do |b| %>
+      <p><%= User.find_by(uid: b.sponsor.to_s).name %> gave a beer to <%= User.find_by(uid: b.recipient.to_s).name %> on <%= b.receivedAt.strftime("%B %d, %Y at %I:%M%p") %></p>
+  <% end %>
+</div>
+

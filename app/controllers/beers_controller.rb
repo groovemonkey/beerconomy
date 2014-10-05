@@ -56,11 +56,6 @@ class BeersController < ApplicationController
     # LOGGED IN USERS:
     if current_user
 
-      # is this the user that created the beer?
-      if current_user.beersOffered.include?(randID)
-        return redirect_to user_home_path, notice: "You can't accept your own beer. Go find some friends!"
-      end
-
       # clear session option, if it was used as part of a login redirect
       if session[:beer_to_submit]
         session[:beer_to_submit] = nil
@@ -68,6 +63,18 @@ class BeersController < ApplicationController
 
       timenow = Time.now()
       @beer = Beer.find(randID)
+
+      # has this beer already been received?
+      if @beer.receivedAt
+        return redirect_to showbeer_path({id: randID}), notice: "This beer has already been accepted"
+      end
+
+      # is this the user that created the beer?
+      if current_user.beersOffered.include?(randID)
+        return redirect_to user_home_path, notice: "You can't accept your own beer. Go find some friends!"
+      end
+
+
 
       # credit the sender and remove beer from 'beersOffered'
       sponsor = User.find_by uid: @beer.sponsor.to_s
@@ -119,7 +126,11 @@ class BeersController < ApplicationController
     else
       @recipientname = false
     end
+  end
 
+  def index
+    # take the last 15 received Beers
+    @beers = Beer.order(receivedAt: :desc).where.not(receivedAt: nil).limit(15)
   end
 
 end

@@ -1,6 +1,5 @@
 TODO:
 
--once a beer has been received, it shouldn't be receivable again (just redirect to the beer)
 
 
 
@@ -21,6 +20,10 @@ Rails Notes:
   -for a database reset FROM THE MIGRATIONS, do `rake db:drop db:create db:migrate db:seed`
   -for a database reset FROM CURRENT SCHEMA, do `rake db:reset`
 
+
+  GRRRRR ActiveRecord downcases column names:
+  Beer.order("receivedAT DESC") returns:
+  'ActiveRecord::StatementInvalid: PG::UndefinedColumn: ERROR:  column "receivedat" does not exist'
 
 
 

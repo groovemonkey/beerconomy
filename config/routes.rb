@@ -1,19 +1,20 @@
 Rails.application.routes.draw do
-  get 'beers/create'
 
+  resources :beers
+  # this makes beers fairly hard to guess -- we're using randomIDs instead of DB ids
+  match "/beer/:randID", to: 'beers#show', as: 'showbeer', via: [:get]
+  get 'beers/create'
   match 'beers/receive/:randID', to: "beers#receive", as: 'receivebeer', via: [:get]
+
 
   get 'static/home' # overridden by root route below
   match "/about", to: "static#about", via: [:get]
-
   get 'static/global_beer_activity'
-
+  
   get 'user/home'
-
-  get 'sessions/new'
-
-
+  
   # authentication
+  get 'sessions/new'
   match "/auth/:provider/callback", to: "sessions#create", via: [:get, :post]
   match "/auth/failure", to: "sessions#failure", via: [:get, :post]
   #match "/logout", to: "sessions#destroy", :as => "logout"
@@ -21,10 +22,6 @@ Rails.application.routes.draw do
 
   resources :identities
 
-
-  resources :beers
-  # this makes beers fairly hard to guess -- we're using randomIDs instead of DB ids
-  match "/beer/:randID", to: 'beers#show', as: 'showbeer', via: [:get]
 
   # match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   # match 'auth/failure', to: redirect('/'), via: [:get, :post]
