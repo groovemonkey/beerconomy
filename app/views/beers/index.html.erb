@@ -4,7 +4,7 @@
 
 <div class="beerLog">
   <% @beers.each do |b| %>
-      <p><%= User.find_by(uid: b.sponsor.to_s).name %> gave a beer to <%= User.find_by(uid: b.recipient.to_s).name %> on <%= b.receivedAt.strftime("%B %d, %Y at %I:%M%p") %></p>
+      <p><%= User.find_by(uid: b.sponsor.to_s).name %> gave a beer to <%= b.recipient %> on <%= b.receivedAt.strftime("%B %d, %Y at %I:%M%p") %></p>
   <% end %>
 </div>
 

@@ -16,7 +16,7 @@ class BeersController < ApplicationController
 
       @beer = user.beers.build(
         sponsor: user.uid,
-        recipient: params[:name],
+        recipient: params[:recipient],
         note: params[:note],
         lat: request_geo_lat,
         lon: request_get_lon,
@@ -92,8 +92,6 @@ class BeersController < ApplicationController
 
       # change the beer's fields
       @beer.user_id = current_user.uid.to_i
-
-      @beer.recipient = current_user.uid.to_i
       @beer.receivedAt = timenow
       @beer.save
 
@@ -118,15 +116,10 @@ class BeersController < ApplicationController
 
   def show
     @beer = Beer.find(params[:id])
-    sponsor = @beer.user #User.find_by uid: @beer.sponsor.to_s
-    recipient = User.find_by uid: @beer.recipient.to_s
+    sponsor = User.find_by uid: @beer.sponsor.to_s
     @sponsorname = sponsor.name
-    if recipient
-      @recipientname = recipient.name
-    else
-      @recipientname = false
-    end
   end
+  
 
   def index
     # take the last 15 received Beers

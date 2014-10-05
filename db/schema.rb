@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20141004085044) do
 
   create_table "beers", force: true do |t|
     t.integer  "sponsor"
-    t.integer  "recipient"
+    t.string   "recipient"
     t.string   "lat"
     t.string   "lon"
     t.string   "randID"

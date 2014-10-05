@@ -2,15 +2,15 @@
 
 <p>Given by: <%= @sponsorname %></p>
 
-<% if @recipientname == false %>
+<% if @beer.receivedAt == false %>
   <p>Send this link to the receiver: <%= url_for receivebeer_path(@beer.randID) %></p>
 <% else %>
-  <p>Given to: <%= @recipientname %></p>
+  <p>Given to: <%= @beer.recipient %></p>
 <% end %>
 
 <hr>
 
-<p>To: <%= @beer.receiver %></p>
+<p>To: <%= @beer.recipient %></p>
 <p>Note: <%= @beer.note %></p>
 
 <!-- <p>Given at latitude: <%= @beer.lat %></p>

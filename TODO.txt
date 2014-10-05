@@ -2,17 +2,11 @@ TODO:
 -add email address field for giving beers? Let them be mailed out?
 -improve show beer screen after creation, i.e. "send this link to your friend!"
 
--Beer.recipient needs to be a STRING -- the name of the receiver, specified during beer creation (this won't work the way it is now)
--Stuff that Beer.recipient is being used for needs to switch to Beer.user (right?)
-
 
 THINGS I AM APOLOGIZING FOR:
 
 -beer has 'id' and 'randID'. Because I'm using 'randID' as primary key, calling Beer.id DOES NOT return the numerical ID; it returns the 'randID' string. To get the numerical ID, you have to call Beer['id']. I am truly sorry.
 
-Do we really need both of these?
-  @beer.user = current_user.uid.to_i
-  @beer.recipient = current_user.uid.to_i
 
 
 

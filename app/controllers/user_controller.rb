@@ -4,9 +4,12 @@ class UserController < ApplicationController
     
     # put the 5 newest beer objects into a collection 
     @beers_given = []
-    @user.beersGiven[-5..-1].each do |b|
-      bObj = Beer.find_by id: b
-      @beers_given << bObj
+
+    unless @user.beersGiven.empty?
+      @user.beersGiven[-5..-1].each do |b|
+        bObj = Beer.find_by id: b
+        @beers_given << bObj
+      end
     end
 
     # count received beers
