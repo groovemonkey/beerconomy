@@ -5,7 +5,7 @@ class UserController < ApplicationController
     # put the 5 newest beer objects into a collection 
     @beers_given = []
 
-    unless @user.beersGiven.empty?
+    unless @user.beersGiven.count < 5
       @user.beersGiven[-5..-1].each do |b|
         bObj = Beer.find_by id: b
         @beers_given << bObj
