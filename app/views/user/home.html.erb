@@ -22,21 +22,34 @@
 <p><%= @user.name %> has given <%= @beers_given.count %> beers and received <%= @received_count %> beers</p>
 
 <% if @beersOffered %>
-  <p><%= @user.name %> has offered <%= @beersOffered %> beers that haven't been accepted yet.</p>
+  <p><%= @user.name %> has offered <%= @beersOffered.count %> beers that haven't been accepted yet.</p>
+
+  <% @beersOffered.each do |b| %>
+    <div class="beerGiven">
+      <ul>
+        <li>To: <%= b.recipient %></li>
+        <li><%= link_to "Right-click this link, choose 'copy link address', and send to your recipient!", receivebeer_path(b.randID) %></li>
+      </ul>
+      <hr>
+    </div>
+  <% end %>
+
 <% end %>
 
 
 
 <% if @beers_given %>
   
-  <h3>Last 5 beers given:</h3>
+  <h3>Latest beers given:</h3>
 
   <% @beers_given.each do |b| %>
     <div class="beerGiven">
-      <li>recipient<%= b.recipient %></li>
-      <li>randID<%= b.randID %></li>
-      <li>receivedAt<%= b.receivedAt %></li>
-      <li>note<%= b.note %></li>
+      <ul>
+        <li>Given to: <%= b.recipient %></li>
+        <li>randID<%= b.randID %></li>
+        <li>receivedAt<%= b.receivedAt %></li>
+        <li>note<%= b.note %></li>
+      </ul>
       <hr>
     </div>
   <% end %>

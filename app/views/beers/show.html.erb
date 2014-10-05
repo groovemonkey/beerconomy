@@ -2,10 +2,13 @@
 
 <p>Given by: <%= @sponsorname %></p>
 
-<% if @beer.receivedAt == false %>
-  <p>Send this link to the receiver: <%= url_for receivebeer_path(@beer.randID) %></p>
-<% else %>
+<% if @beer.receivedAt %>
   <p>Given to: <%= @beer.recipient %></p>
+<% else %>
+  <p>Send this link to the receiver: <%= "#{request.base_url}#{url_for receivebeer_path(@beer.randID)}" %></p>
+
+  <a href="<%= url_for receivebeer_path(@beer.randID) %>" class="button large alert">Claim This Beer</a>
+  
 <% end %>
 
 <hr>

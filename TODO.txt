@@ -1,7 +1,6 @@
 TODO:
 -add email address field for giving beers? Let them be mailed out?
--improve show beer screen after creation, i.e. "send this link to your friend!"
-
+-better style for the submit button in beers/new.html.erb
 
 THINGS I AM APOLOGIZING FOR:
 
