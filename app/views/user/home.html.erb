@@ -13,41 +13,32 @@
   <li>and who you've given beers to.</li>
 </ul>
 
-<p>There will also be a "GIVE SOMEONE A BEER" button here (we don't need a separate view for that; just AJAX and a modal.</p>
 
 <%= button_to "Give Someone A Beer", new_beer_path, :class => "button", :method => :get %>
 
 
 <h2>Beers You've Given</h2>
 
-<% if @beers_given %>
-  <% @beers_given.each do |b| %>
-
-  <div class="beerGiven">
-    <li>recipient<%= b.recipient %></li>
-    <li>lat<%= b.lat %></li>
-    <li>lon<%= b.lon %></li>
-    <li>randID<%= b.randID %></li>
-    <li>receivedAt<%= b.receivedAt %></li>
-    <li>note<%= b.note %></li>
-  </div>
-
-  <% end %>
-<% end %>
-
+<p><%= @user.name %> has given <%= @beers_given.count %> beers and received <%= @received_count %> beers</p>
 
 <% if @beersOffered %>
-  <% @beersOffered.each do |b| %>
-
-  <div class="beerOffered">
-    <li>recipient<%= b.recipient %></li>
-    <li>lat<%= b.lat %></li>
-    <li>lon<%= b.lon %></li>
-    <li>randID<%= b.randID %></li>
-    <li>receivedAt<%= b.receivedAt %></li>
-    <li>note<%= b.note %></li>
-  </div>
-
-  <% end %>
+  <p><%= @user.name %> has offered <%= @beersOffered %> beers that haven't been accepted yet.</p>
 <% end %>
 
+
+
+<% if @beers_given %>
+  
+  <h3>Last 5 beers given:</h3>
+
+  <% @beers_given.each do |b| %>
+    <div class="beerGiven">
+      <li>recipient<%= b.recipient %></li>
+      <li>randID<%= b.randID %></li>
+      <li>receivedAt<%= b.receivedAt %></li>
+      <li>note<%= b.note %></li>
+      <hr>
+    </div>
+  <% end %>
+
+<% end %>

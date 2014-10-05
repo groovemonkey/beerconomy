@@ -56,6 +56,11 @@ class BeersController < ApplicationController
     # LOGGED IN USERS:
     if current_user
 
+      # is this the user that created the beer?
+      if current_user.beersOffered.include?(randID)
+        return redirect_to user_home_path, notice: "You can't accept your own beer. Go find some friends!"
+      end
+
       # clear session option, if it was used as part of a login redirect
       if session[:beer_to_submit]
         session[:beer_to_submit] = nil
@@ -78,7 +83,9 @@ class BeersController < ApplicationController
       user.beersReceived.push(@beer['id'])
       user.save
 
-      # change the beer's field's (not doing @beer.user = current_user.uid.to_i)
+      # change the beer's fields
+      @beer.user_id = current_user.uid.to_i
+
       @beer.recipient = current_user.uid.to_i
       @beer.receivedAt = timenow
       @beer.save
