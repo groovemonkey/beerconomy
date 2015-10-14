@@ -14,6 +14,7 @@ gem 'omniauth-identity'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 #gem 'rails', '4.1.4'
 gem 'rails'
+gem 'byebug'
 
 # Use postgresql as the database for Active Record
 #gem 'pg'

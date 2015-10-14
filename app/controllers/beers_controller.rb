@@ -28,7 +28,6 @@ class BeersController < ApplicationController
 
         # TODO fix default values in DB
         user.beersOffered_will_change!
-        
         if user.beersOffered == nil
           user.beersOffered = []
         end

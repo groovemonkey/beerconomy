@@ -86,4 +86,7 @@ bundle exec rake db:migrate
 bundle exec rake rails:update:bin
 
 
+DEBUGGING
+byebug gem is included; just add 'byebug' to set a breakpoint
+
 
