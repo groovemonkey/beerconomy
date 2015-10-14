@@ -14,7 +14,26 @@
 
   <body>
 
+    <nav class="row">
+    <div class="large-12 columns">
+      <ul class="button-group radius even-4">
+        <li><a class="button" href="/about">About</a></li>
+        
+        <% if current_user %>
+          <li><a href="/user/home" class="button">Home</a></li>
+          <li><%= link_to "Log Out", signout_path(), :class => "button" %></li>
+        <% else %>
+          <li><a href="/static/home" class="button">Home</a></li>
+          <li><%= link_to "Log In", signin_path(), :class => "button" %></li>
+        <% end %>
+
+        </ul>
+      </div>
+    </nav>
+
+    <div class="row mainAppContent">
     <%= yield %>
+    </div>
 
   </body>
 </html>

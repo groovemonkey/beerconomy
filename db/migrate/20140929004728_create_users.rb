@@ -4,8 +4,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :passhash
       t.string :email
-      t.integer :beersGiven, :array => true, default: []
-      t.integer :beersReceived, :array => true, default: []
+      t.string :beersGiven, :array => true
+      t.string :beersReceived, :array => true
 
       t.timestamps
     end

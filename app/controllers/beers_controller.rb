@@ -84,7 +84,13 @@ class BeersController < ApplicationController
 
       # credit the sender and remove beer from 'beersOffered'
       sponsor = User.find_by uid: @beer.sponsor.to_s
+
+      # TODO fix default values in DB
       sponsor.beersGiven_will_change!
+      if sponsor.beersGiven == nil
+        sponsor.beersGiven = []
+      end
+
       sponsor.beersOffered_will_change!
       sponsor.beersOffered -= [randID]
       sponsor.beersGiven.push(@beer['id'])

@@ -1,25 +1,12 @@
 class UserController < ApplicationController
-  
-  def last5(coll)
-    if coll
-      if coll.count < 5
-        return coll
-      else
-        return coll[-5..-1]
-      end
-    else # no collection at all
-      return []
-    end
-  end
-
 
   def home
     @user = current_user
     
     # put the 5 newest beer objects into a collection 
     @beers_given = []
-    last5(@user.beersGiven).each do |b|
-        bObj = Beer.find_by id: b
+    @user.beersGiven.last(5).each do |b|
+        bObj = Beer.find_by randID: b
         @beers_given << bObj
     end
 

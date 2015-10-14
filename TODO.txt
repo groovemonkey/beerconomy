@@ -3,9 +3,9 @@ DONE:
 
 
 TODO:
--default value for array fields in DB seem to be stringified
-    -User.beersOffered
-    -User.beersGiven
+-add stats on home page for beers received
+-redeem a beer functionality (from home page)
+
 
 -get a good creative commons beer picture!
 -add email address field for giving beers? Let them be mailed out?

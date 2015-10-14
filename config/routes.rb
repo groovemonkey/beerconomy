@@ -14,11 +14,12 @@ Rails.application.routes.draw do
   get 'user/home'
   
   # authentication
-  get 'sessions/new'
+  #get 'sessions/new'
+  match "sessions/new", to: 'sessions#new', as: 'signin', via: [:get, :post]
   match "/auth/:provider/callback", to: "sessions#create", via: [:get, :post]
   match "/auth/failure", to: "sessions#failure", via: [:get, :post]
   #match "/logout", to: "sessions#destroy", :as => "logout"
-  match '/signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
+  match '/signout', to: 'sessions#destroy', as: 'signout', via: [:get]
 
   resources :identities
 

@@ -45,10 +45,10 @@
   <% @beers_given.each do |b| %>
     <div class="beerGiven">
       <ul>
-        <li>Given to: <%= b.recipient %></li>
-        <li>randID<%= b.randID %></li>
-        <li>receivedAt<%= b.receivedAt %></li>
-        <li>note<%= b.note %></li>
+        <li><strong>Given to:</strong> <%= b.recipient %></li>
+        <li><strong>Random ID:</strong> <%= b.randID %></li>
+        <li><strong>Received At:</strong> <%= b.receivedAt %></li>
+        <li><strong>Note:</strong> <%= b.note %></li>
       </ul>
       <hr>
     </div>
