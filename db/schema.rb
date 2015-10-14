@@ -13,10 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20141004085044) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "beers", force: true do |t|
+  create_table "beers", force: :cascade do |t|
     t.integer  "sponsor"
     t.string   "recipient"
     t.string   "lat"
@@ -29,7 +26,7 @@ ActiveRecord::Schema.define(version: 20141004085044) do
     t.integer  "user_id"
   end
 
-  create_table "identities", force: true do |t|
+  create_table "identities", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
@@ -37,19 +34,19 @@ ActiveRecord::Schema.define(version: 20141004085044) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "passhash"
     t.string   "email"
-    t.integer  "beersGiven",       default: [], array: true
-    t.integer  "beersReceived",    default: [], array: true
+    t.integer  "beersGiven"
+    t.integer  "beersReceived"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "provider"
     t.string   "uid"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.string   "beersOffered",     default: [], array: true
+    t.string   "beersOffered"
   end
 
 end

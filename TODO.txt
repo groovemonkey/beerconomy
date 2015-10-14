@@ -1,6 +1,42 @@
+DONE:
+
+
+
 TODO:
+-default value for array fields in DB seem to be stringified
+    -User.beersOffered
+    -User.beersGiven
+
+-get a good creative commons beer picture!
 -add email address field for giving beers? Let them be mailed out?
--better style for the submit button in beers/new.html.erb
+-claim this beer should copy the link to the clipboard
+-style the 'show beer' page -- cool handwritten note, etc.
+
+
+NEXT VERSION:
+-limited beers per person per day?
+-actual facebook login
+-oauth login for gmail etc?
+
+Beer Pictures:
+https://www.flickr.com/photos/evilsivan/2818268935
+https://www.flickr.com/photos/adrianpike/6894460863 (front page background?)(adrian pike)
+https://www.flickr.com/photos/katarzynab/3360111942
+https://www.flickr.com/photos/barron/6778238539
+https://www.flickr.com/photos/elton_e_photography/10270029805
+https://www.flickr.com/photos/ckindel/6364837851
+https://www.flickr.com/photos/ykjc9/2766738859
+https://www.flickr.com/photos/billsophoto/5243014096
+https://www.flickr.com/photos/placbo/229464701
+https://www.flickr.com/photos/snapperwolf/2482160171
+https://www.flickr.com/photos/brendare/168726596
+https://www.flickr.com/photos/green_moon_art/9611589274
+https://www.flickr.com/photos/infomastern/15278691487
+https://www.flickr.com/photos/e-orimo/2844504760
+https://www.flickr.com/photos/maynard/538540914
+
+
+
 
 THINGS I AM APOLOGIZING FOR:
 

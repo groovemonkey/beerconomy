@@ -3,9 +3,35 @@
 <p>Do you owe someone a beer? It's likely that you do. Send them a (virtual) beer now!</p>
 
 <p>Here, users (registered and unregistered alike) are prompted to:</p>
-<ul>
-  <li>Give someone a beer (sign up + give)</li>
-  <li>Redeem a beer (code)</li>
-  <li>Register -- no e-mail required</li>
-</ul>
+
+
+<div class="row">
+    <div class="large-3 columns">
+        <ul class="pricing-table">
+            <li class="title">Redeem A Beer</li>
+            <li class="price">$99.99</li>
+            <li class="description">(just kidding, it's free)</li>
+            <li class="bullet-item">If someone has sent you a virtual beer, that probably means you're a pretty cool human -- congratulations!</li>
+            <li class="cta-button"><a class="button" href="#">Redeem</a></li>
+        </ul>
+    </div>
+    <div class="large-6 columns">
+        <ul class="pricing-table">
+            <li class="title">Give a (Virtual) Beer to Someone Great</li>
+            <li class="price">$0.00</li>
+            <li class="description">Has someone done something nice for you?</li>
+            <li class="bullet-item">Did someone go out of their way to help?</li>
+            <li class="cta-button"><%= button_to "Give Them a Beer!", new_beer_path, :class => "button", :method => :get %></li>
+        </ul>
+    </div>
+    <div class="large-3 columns">
+        <ul class="pricing-table">
+            <li class="title">Register</li>
+            <li class="description">We'll never give away, sell, rent, bully, or stare menacingly at your e-mail address.</li>
+            <li class="bullet-item">You won't end up on marketing mailing lists or anything weird like that.</li>
+            <li class="bullet-item">I'll support facebook and oauth providers in the next version.</li>
+            <li class="cta-button"><%= button_to "Sign in", "/sessions/new", :class=> "button", :method => :get %></li>
+        </ul>
+    </div>
+</div>
 

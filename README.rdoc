@@ -59,15 +59,31 @@ beer has TWO users (has many?)
 beer belongs to ONE user (but was given_by another)
 # the problem with this is that finding "who has this user GIVEN beers to" requires parsing ALL beers to see which were given_by this user.
 
+
+
 DONE:
 apt-get install postgresql-9.4 postgresql-server-dev-9.4
 su - postgres
 create role beerapp with createdb login password 'oij34c8902ckdhsaH'
+# ctrl-d
 
 rails new myapp --database=postgresql
+
+# changed dev DB to sqlite3
 
 rails generate model User name:string passhash:string email:string beersGiven:array beersReceived:array
 
 rails generate model Beer sponsor:integer recipient:integer lat:string lon:string randID:string receivedAt:timestamp
+
+
+
+SETUP:
+
+bundle exec rake db:migrate
+
+
+# ugliness (for conflicting/outdated/stale gems and stuff)
+bundle exec rake rails:update:bin
+
 
 

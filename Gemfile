@@ -1,16 +1,25 @@
 source 'https://rubygems.org'
 
+
+#gem 'rake'
+gem 'i18n'
+
 # authentication
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt' #, '~> 3.1.7'
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
 gem 'omniauth-identity'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.4'
+#gem 'rails', '4.1.4'
+gem 'rails'
+
 # Use postgresql as the database for Active Record
-gem 'pg'
+#gem 'pg'
+# or...not
+gem 'sqlite3'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets

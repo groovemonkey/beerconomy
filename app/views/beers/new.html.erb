@@ -11,8 +11,6 @@
 
 <% if session[:beer_to_submit] %>
 
-  beer to submit is <%= session[:beer_to_submit] %>
-
   <%= form_for @beer do %>
     <div class="field">
       <%= label_tag :recipient %><br>
@@ -28,8 +26,6 @@
   <% end %>
   <% session[:beer_to_submit] = nil %>
 
-
-
 <% else %>
 
   <%= form_for @beer do %>
@@ -43,7 +39,7 @@
       <%= text_field_tag :note %>
     </div>
 
-    <div class="actions"><%= submit_tag "Give Beer" %></div>
+    <div class="actions"><%= submit_tag "Give Beer", :class => "button" %></div>
   <% end %>
 
 <% end %>

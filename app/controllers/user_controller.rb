@@ -1,10 +1,14 @@
 class UserController < ApplicationController
   
   def last5(coll)
-    if coll.count < 5
-      return coll
-    else
-      return coll[-5..-1]
+    if coll
+      if coll.count < 5
+        return coll
+      else
+        return coll[-5..-1]
+      end
+    else # no collection at all
+      return []
     end
   end
 
@@ -20,14 +24,19 @@ class UserController < ApplicationController
     end
 
     # count received beers
-    @received_count = @user.beersReceived.count
+    @received_count = @user.beersReceived.count if @user.beersReceived else 0
 
     # show offered beers
     @beersOffered = []
-    @user.beersOffered.each do |b|
+    puts @user.beersOffered.inspect
+
+    userbeers = @user.beersOffered || []
+
+    userbeers.each do |b|
       bObj = Beer.find_by randID: b
       @beersOffered << bObj
     end
+
 
     #identity has email addr
     identity = Identity.find(current_user.uid.to_i)

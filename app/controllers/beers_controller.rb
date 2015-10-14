@@ -25,7 +25,14 @@ class BeersController < ApplicationController
 
       if @beer.save
         #user.update(beersOffered: [(user.beersOffered << @beer.randID)].flatten)
+
+        # TODO fix default values in DB
         user.beersOffered_will_change!
+        
+        if user.beersOffered == nil
+          user.beersOffered = []
+        end
+
         user.beersOffered.push(@beer.randID)
         user.save
         redirect_to @beer
