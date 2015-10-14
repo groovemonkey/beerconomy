@@ -31,6 +31,12 @@
       </div>
     </nav>
 
+    <div class="row flashalerts">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: "alert alert-info" %>
+      <% end %>
+    </div>
+
     <div class="row mainAppContent">
     <%= yield %>
     </div>
