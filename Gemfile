@@ -42,8 +42,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
-
-gem 'foundation-rails'
+# new foundation-rails 5.5 BROKEN with rails 4.2 (https://github.com/zurb/foundation/issues/6148)
+# gem 'foundation-rails'
+gem 'foundation-rails', '5.4.5'
 
 # Use unicorn as the app server
 # gem 'unicorn'
