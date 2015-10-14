@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
   resources :beers
+  
+  match '/redeem', to: 'beers#redeem', as: 'redeem_beer', via: [:get, :post]
   # this makes beers fairly hard to guess -- we're using randomIDs instead of DB ids
   match "/beer/:randID", to: 'beers#show', as: 'showbeer', via: [:get]
   get 'beers/create'
   match 'beers/receive/:randID', to: "beers#receive", as: 'receivebeer', via: [:get]
-
 
   get 'static/home' # overridden by root route below
   match "/about", to: "static#about", via: [:get]

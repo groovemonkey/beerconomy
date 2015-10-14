@@ -1,0 +1,16 @@
+<h1>Redeem a Beer</h1>
+
+<p>Go ahead, redeem it!</p>
+<p>Enter the beer ID that was sent to you by the wonderful human being sponsoring this beer.</p>
+<p>If that person sent you a link to your beer, you can just click on that instead.</p>
+
+<%= form_tag redeem_beer_path do %>
+
+<div class="field">
+    <%= label_tag :beerID %><br>
+    <%= text_field_tag :beerID %>
+  </div>
+
+  <div class="actions"><%= submit_tag "Redeem" %></div>
+
+<% end %>

@@ -55,6 +55,14 @@ class BeersController < ApplicationController
   end
 
 
+  def redeem()
+    if request.method == "POST"
+      return redirect_to receivebeer_path(randID: request.params['beerID']) 
+    end
+    return
+  end
+
+
   def receive()
     # beer comes in as a random ID, shared through a link OUTSIDE the app
     randID = params[:randID]
@@ -68,7 +76,11 @@ class BeersController < ApplicationController
       end
 
       timenow = Time.now()
-      @beer = Beer.find(randID)
+      begin
+        @beer = Beer.find(randID)
+      rescue
+        return redirect_to redeem_beer_path, notice: "Sorry, there's no such beer. Did you paste the beer ID correctly?"
+      end
 
       # has this beer already been received?
       if @beer.receivedAt

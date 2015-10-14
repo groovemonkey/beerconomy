@@ -12,7 +12,7 @@
             <li class="price">$99.99</li>
             <li class="description">(just kidding, it's free)</li>
             <li class="bullet-item">If someone has sent you a virtual beer, that probably means you're a pretty cool human -- congratulations!</li>
-            <li class="cta-button"><a class="button" href="#">Redeem</a></li>
+            <li class="cta-button"><%= button_to "Redeem", redeem_beer_path, :class => "button", :method => :get %></li>
         </ul>
     </div>
     <div class="large-6 columns">
